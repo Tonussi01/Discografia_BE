@@ -9,6 +9,6 @@ class Disco extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome', 'descricao'];
-
+    // Especifica os campos que podem ser preenchidos em massa
+    protected $fillable = ['nome', 'descricao', 'imagem_url'];
 }

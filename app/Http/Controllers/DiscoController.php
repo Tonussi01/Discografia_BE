@@ -24,6 +24,7 @@ class DiscoController extends Controller
             $request->validate([
                 'nome' => 'required|string|max:255',
                 'descricao' => 'nullable|string',
+                'imagem_url' => 'nullable|url',  // Ajustado para 'imagem_url'
             ]);
 
             $disco = Disco::create($request->all());
@@ -53,6 +54,7 @@ class DiscoController extends Controller
             $request->validate([
                 'nome' => 'sometimes|required|string|max:255',
                 'descricao' => 'sometimes|nullable|string',
+                'imagem_url' => 'nullable|url',  // Ajustado para 'imagem_url'
             ]);
 
             $disco = Disco::findOrFail($id);

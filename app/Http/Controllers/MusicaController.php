@@ -38,7 +38,7 @@ class MusicaController extends Controller
                 'nome' => $request->nome,
                 'duracao' => $request->duracao,
                 'id_album' => $request->id_album,
-                'nome_album' => $disco->nome,
+                'nome_album' => $disco->nome,  // Continua salvando o nome do álbum
             ]);
 
             return response()->json($musica, 201);
@@ -78,13 +78,12 @@ class MusicaController extends Controller
                 'id_album' => 'sometimes|required|exists:discos,id',
             ]);
 
-            $musica->update($request->all());
-
             if ($request->has('id_album')) {
                 $disco = Disco::findOrFail($request->id_album);
-                $musica->nome_album = $disco->nome;
-                $musica->save();
+                $request['nome_album'] = $disco->nome;  // Atualiza o nome do álbum na música
             }
+
+            $musica->update($request->all());
 
             return response()->json($musica, 200);
         } catch (ValidationException $e) {
@@ -99,13 +98,13 @@ class MusicaController extends Controller
     public function getByAlbumId($id_album)
     {
         try {
-            // Busca todas as músicas que pertencem ao álbum com o ID fornecido
-            $musicas = Musica::where('id_album', $id_album)->get();
+            $musicas = Musica::select('musicas.*', 'discos.nome as nome_album')
+                ->join('discos', 'musicas.id_album', '=', 'discos.id')
+                ->where('id_album', $id_album)
+                ->get();
 
-            // Retorna a lista de músicas como resposta JSON
-            return response()->json($musicas);
+            return response()->json($musicas, 200);
         } catch (\Exception $e) {
-            // Retorna uma resposta de erro se algo der errado
             return response()->json(['error' => 'Erro ao buscar músicas'], 500);
         }
     }
