@@ -1,66 +1,179 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# API Discografia
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A **API Discografia** é uma API REST desenvolvida para gerenciar informações sobre álbuns e músicas. A API fornece endpoints para CRUD (Criar, Ler, Atualizar, Deletar) operações em álbuns e músicas.
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Índice
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- [Visão Geral](#visão-geral)
+- [Funcionalidades](#funcionalidades)
+- [Instalação](#instalação)
+- [Uso](#uso)
+- [Endpoints](#endpoints)
+- [Modelo de Dados](#modelo-de-dados)
+- [Exemplos](#exemplos)
+- [Licença](#licença)
 
-## Learning Laravel
+## Visão Geral
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+ - Este projeto foi desenvolvido como um desafio tecnico proposto pela empresa Techpines, os requisitos eram:
+ - Back-end Php/Laravel
+ - Front-end React
+ - Banco de dados livre
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## Funcionalidades
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+ - Ver lista de álbuns e faixas
+ - Pesquisar álbuns e faixas por nome
+ - Adicionar um novo álbum
+ - Adicionar uma nova faixa em um álbum
+ - Excluir uma faixa
+ - Excluir um álbum
 
-### Premium Partners
+## Instalação
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Para executar a API DevQuiz localmente, siga os passos abaixo:
 
-## Contributing
+1. **Clone o repositório:**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+   ```bash
+   git clone https://github.com/Tonussi01/Discografia_BE
 
-## Code of Conduct
+  2. **Navegue até o diretório do projeto:**
+     
+     ```bash
+     cd discografia
+     
+  3. **Instale as dependências::**
+      ```bash
+      composer install
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+ 4. **Configure o arquivo .env:**
+      ```bash
+      cp .env.example .env
+      
+ 5. **Gere a chave de aplicação:**
+     ```bash
+    php artisan key:generate
+    
+ 6. **Execute as migrações do banco de dados:**
+    ```bash
+    php artisan migrate
+        
+ 7. **Inicie o servidor de desenvolvimento:**
+    ```bash
+    php artisan serve
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+A API será iniciada e estará disponível no endereço http://localhost:8000 por padrão.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+# Endpoints da API
+
+# Álbuns
+
+1. **Listar Álbuns**
+   - **Método:** GET
+   - **Endpoint:** /api/discos
+   - **Descrição:** Obtém a lista de todos os álbuns.
+
+2. **Obter Álbum**
+   - **Método:** GET
+   - **Endpoint:** /api/discos/{id}
+   - **Descrição:** Obtém os detalhes de um álbum específico.
+   - **Parâmetros:**
+     - `id` (inteiro) - ID do álbum.
+
+3. **Criar Álbum**
+   - **Método:** POST
+   - **Endpoint:** /api/discos
+   - **Descrição:** Cria um novo álbum.
+   - **Corpo da Requisição:**
+     ```json
+     {
+       "nome": "Nome do Álbum",
+       "descricao": "Descrição do Álbum",
+       "imagem_url": "URL da Imagem do Álbum"
+     }
+     ```
+
+4. **Atualizar Álbum**
+   - **Método:** PUT
+   - **Endpoint:** /api/discos/{id}
+   - **Descrição:** Atualiza os detalhes de um álbum específico.
+   - **Parâmetros:**
+     - `id` (inteiro) - ID do álbum.
+   - **Corpo da Requisição:**
+     ```json
+     {
+       "nome": "Nome Atualizado do Álbum",
+       "descricao": "Descrição Atualizada do Álbum",
+       "imagem_url": "URL Atualizada da Imagem do Álbum"
+     }
+     ```
+
+5. **Deletar Álbum**
+   - **Método:** DELETE
+   - **Endpoint:** /api/discos/{id}
+   - **Descrição:** Deleta um álbum específico.
+   - **Parâmetros:**
+     - `id` (inteiro) - ID do álbum.
+
+## Músicas
+
+1. **Listar Músicas**
+   - **Método:** GET
+   - **Endpoint:** /api/musicas
+   - **Descrição:** Obtém a lista de todas as músicas.
+
+2. **Obter Música**
+   - **Método:** GET
+   - **Endpoint:** /api/musicas/{id}
+   - **Descrição:** Obtém os detalhes de uma música específica.
+   - **Parâmetros:**
+     - `id` (inteiro) - ID da música.
+
+3. **Criar Música**
+   - **Método:** POST
+   - **Endpoint:** /api/musicas
+   - **Descrição:** Cria uma nova música.
+   - **Corpo da Requisição:**
+     ```json
+     {
+       "nome": "Nome da Música",
+       "duracao": 180,  // Duração em segundos
+       "nome_album": "Nome do Álbum"
+     }
+     ```
+
+4. **Atualizar Música**
+   - **Método:** PUT
+   - **Endpoint:** /api/musicas/{id}
+   - **Descrição:** Atualiza os detalhes de uma música específica.
+   - **Parâmetros:**
+     - `id` (inteiro) - ID da música.
+   - **Corpo da Requisição:**
+     ```json
+     {
+       "nome": "Nome Atualizado da Música",
+       "duracao": 190,  // Duração em segundos
+       "nome_album": "Nome Atualizado do Álbum"
+     }
+     ```
+
+5. **Deletar Música**
+   - **Método:** DELETE
+   - **Endpoint:** /api/musicas/{id}
+   - **Descrição:** Deleta uma música específica.
+   - **Parâmetros:**
+     - `id` (inteiro) - ID da música.
+
+
+## Licença
+
+Distribuído sob a licença MIT.
+
