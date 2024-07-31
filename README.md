@@ -69,7 +69,7 @@ Para executar a API DevQuiz localmente, siga os passos abaixo:
 A API será iniciada e estará disponível no endereço http://localhost:8000 por padrão.
 
 
-# Endpoints da API
+## Endpoints
 
 # Álbuns
 
