@@ -96,6 +96,20 @@ class MusicaController extends Controller
         }
     }
 
+    public function getByAlbumId($id_album)
+    {
+        try {
+            // Busca todas as músicas que pertencem ao álbum com o ID fornecido
+            $musicas = Musica::where('id_album', $id_album)->get();
+
+            // Retorna a lista de músicas como resposta JSON
+            return response()->json($musicas);
+        } catch (\Exception $e) {
+            // Retorna uma resposta de erro se algo der errado
+            return response()->json(['error' => 'Erro ao buscar músicas'], 500);
+        }
+    }
+
     public function destroy($id)
     {
         try {
