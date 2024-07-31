@@ -32,7 +32,7 @@ A **API Discografia** é uma API REST desenvolvida para gerenciar informações 
 
 ## Instalação
 
-Para executar a API DevQuiz localmente, siga os passos abaixo:
+Para executar a API Discografia localmente, siga os passos abaixo:
 
 1. **Clone o repositório:**
 
