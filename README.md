@@ -9,10 +9,7 @@ A **API Discografia** é uma API REST desenvolvida para gerenciar informações 
 - [Visão Geral](#visão-geral)
 - [Funcionalidades](#funcionalidades)
 - [Instalação](#instalação)
-- [Uso](#uso)
 - [Endpoints](#endpoints)
-- [Modelo de Dados](#modelo-de-dados)
-- [Exemplos](#exemplos)
 - [Licença](#licença)
 
 ## Visão Geral
